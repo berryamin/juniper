@@ -5,25 +5,6 @@ from decimal import Decimal
 from . import app
 from . import db
 
-#user = app.config['POSTGRES_USER']
-#password = app.config['POSTGRES_PASSWORD']
-#host = app.config['POSTGRES_HOST']
-#database = app.config['POSTGRES_DB']
-#port = app.config['POSTGRES_PORT']
-#
-#DATABASE_CONNECTION_URI = f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}'
-#
-#engine = create_engine(DATABASE_CONNECTION_URI)
-#
-## use session_factory() to get a new Session
-#_SessionFactory = sessionmaker(bind=engine)
-#
-#Base = declarative_base()
-#
-#def session_factory():
-#    Base.metadata.create_all(engine)
-#    return _SessionFactory()
-
 @dataclass
 class Record(db.base()):
     # These tell jsonify how to serialize this class
@@ -33,7 +14,7 @@ class Record(db.base()):
     int_val: int
     num_val: Decimal
 
-    __tablename__ = 'rdat_records'
+    __tablename__ = 'juniper_records'
     id = Column(Integer, primary_key=True)
     str_val = Column(String)
     date_val = Column(Date)
@@ -45,7 +26,6 @@ class Record(db.base()):
         self.date_val = date_val
         self.int_val = int_val
         self.num_val = num_val
-
 
 class RecordDatabase:
 
